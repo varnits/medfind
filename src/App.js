@@ -1,24 +1,17 @@
 import React ,{Component}from 'react';
+import MedResult from './ResultComponent.js';
 import './App.css';
 const Exercise = props => (
   <tr>
     <td>{props.exercise.Drug_Name}</td>
-    <td>{props.exercise.Price}</td>
-    <td>{props.exercise.real_price}</td>
-    {/* <td>{props.exercise.date.substring(0,10)}</td> */}
+     <td>{props.exercise.Price}</td> 
+    <td>{props.exercise.real_Price}</td>
      {/* {<td>
       <Link to={"/edit/"+props.exercise._id}>Buy</Link> 
     </td> } */}
   </tr>
 )
-export const AuthMenuList = props => {
-  return [
-    <li>Home</li>
-    // <li>About</li>,
-    // <li>Contact Us</li>,
-    // <li>Logout</li>
-  ];
-};
+
 
 class App extends Component{
 
@@ -60,15 +53,22 @@ class App extends Component{
         results:body
         
       });
-     // this.searchResults();
-   // console.log(query + " d as");
+     
 
     
   }
   searchResults () {
       //console.log("Search ");//+body[0].get("Price"));
+
       return this.state.results.map(currentexercise => {
-        return <Exercise exercise={currentexercise}  key={currentexercise.Price}/>;
+
+        return (
+        <div className ="container">
+                          <div className="col-6 col-md-3 m-2" >
+
+                     <MedResult result={currentexercise} />
+        </div>
+        </div>);
       })
     }
       // return this.state.exercises.map(currentexercise => {
@@ -96,23 +96,26 @@ class App extends Component{
             <input type="submit" value="Search" className="btn btn-primary" />
           </div>
         </form>
-         {this.state.showResults && <table className="table">
-          <thead className="thead-light">
+        <div className="container">
+
+         {this.state.showResults && <div className="container">
+          {/* <thead className="thead-light">
+
             <tr>
               <th>Name</th>
               <th>MRP</th>
               <th>Discount Price</th>
-              <th>Link</th>             
-              {/* <th>Date</th>
-              <th>Actions</th> */}
+           
             </tr>
-          </thead>
-          <tbody>
+          </thead> */}
+
+          
             { this.searchResults() }
-          </tbody>
-        </table>}
-        
-      </div>
+         
+        </div>}
+        </div>    
+
+          </div>
 
     )
   }
