@@ -1,16 +1,7 @@
 import React ,{Component}from 'react';
 import MedResult from './ResultComponent.js';
 import './App.css';
-const Exercise = props => (
-  <tr>
-    <td>{props.exercise.Drug_Name}</td>
-     <td>{props.exercise.Price}</td> 
-    <td>{props.exercise.real_Price}</td>
-     {/* {<td>
-      <Link to={"/edit/"+props.exercise._id}>Buy</Link> 
-    </td> } */}
-  </tr>
-)
+
 
 
 class App extends Component{
@@ -35,8 +26,9 @@ class App extends Component{
       query: e.target.value
     })
   }
+  //Triggered when users click search button makes request to our backend which return a json object(an array of hashmaps) 
+  //Upon recieving this showResults is triggered (by changing the showResults boolean to true)  which generates JSX element for each array member in the form of MedResult
    async onSubmit(e) {
-    //this.searchResults();
     e.preventDefault();
 
     const requestOptions = {
@@ -45,7 +37,6 @@ class App extends Component{
 
   console.log(this.state.query);
   const k=await fetch('http://localhost:5001/'+this.state.query,requestOptions);
- // .then(response => { console.log(response.json())});
   var body=await k.json();
   console.log("Body "+ body[0].Price);
       this.setState({
@@ -58,7 +49,6 @@ class App extends Component{
     
   }
   searchResults () {
-      //console.log("Search ");//+body[0].get("Price"));
 
       return this.state.results.map(currentexercise => {
 
@@ -71,12 +61,7 @@ class App extends Component{
         </div>);
       })
     }
-      // return this.state.exercises.map(currentexercise => {
-      //   return <Exercise exercise={currentexercise} />
-      // })
-          
-  
-     
+    
    render() {
      
     return (
@@ -99,17 +84,7 @@ class App extends Component{
         <div className="container">
 
          {this.state.showResults && <div className="container">
-          {/* <thead className="thead-light">
-
-            <tr>
-              <th>Name</th>
-              <th>MRP</th>
-              <th>Discount Price</th>
-           
-            </tr>
-          </thead> */}
-
-          
+        
             { this.searchResults() }
          
         </div>}
