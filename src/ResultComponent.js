@@ -1,7 +1,8 @@
 import React from 'react';
 import{Card, CardImg,CardText,CardBody,CardTitle,CardLink} from 'reactstrap';
 import {Link} from 'react-router-dom';
-
+// This component is basically a react strap card that recieves the hashmap with keys like Drug_name and Price and return the card generated. 
+//Runs for each element of the array(Each element is a hashmap) recieved as json object from the node backend
 const MedResult=(props)=>{
   console.log("ss "+props.result.Drug_Name);
   return(
