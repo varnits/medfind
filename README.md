@@ -3,15 +3,14 @@ backend server is generated on http://localhost:5001 and an  GET api is created 
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you must run:
 ### `npm install`
 For first time
 
-In the backend directory, you can run:
+In the backend directory, you must run:
 ### `npm install`
 For first time
 
-### `npm start`
 
 
 
