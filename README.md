@@ -9,8 +9,6 @@ For first time
 
 In the backend directory, you must run:
 ### `npm install`
-For first time
-
 
 
 
